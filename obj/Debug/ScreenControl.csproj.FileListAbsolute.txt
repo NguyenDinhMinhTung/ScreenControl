@@ -1,0 +1,14 @@
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\bin\Debug\ScreenControl.exe.config
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\bin\Debug\ScreenControl.exe
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\bin\Debug\ScreenControl.pdb
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.csprojResolveAssemblyReference.cache
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\MainWindow.g.cs
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\App.g.cs
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl_MarkupCompile.cache
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl_MarkupCompile.lref
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\MainWindow.baml
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.g.resources
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.Properties.Resources.resources
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.csproj.GenerateResource.Cache
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.exe
+c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.pdb
