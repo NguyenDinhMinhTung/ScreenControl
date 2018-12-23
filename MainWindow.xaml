@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
-    <Grid>
-        
-    </Grid>
+        Title="Server" Height="285.355" Width="347.824" ResizeMode="NoResize" Closing="Window_Closing">
+    <StackPanel>
+        <TextBlock Name="txtStatus" Text="接続待ち" FontSize="20" Margin="20" />
+
+        <Grid Width="150" Height="100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Name="brTop" Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="Blue">
+                <TextBlock Name="txtTop" MouseUp="txtTop_MouseUp"></TextBlock>
+            </Border>
+            <Border Name="brLeft" Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="Blue">
+                <TextBlock Name="txtLeft" MouseUp="txtLeft_MouseUp" Background="BlueViolet"></TextBlock>
+            </Border>
+            <Border Name="brRight" Grid.Row="1" Grid.Column="2" BorderThickness="1" BorderBrush="Blue">
+                <TextBlock Name="txtRight" MouseUp="txtRight_MouseUp"></TextBlock>
+            </Border>
+            <Border Name="brBottom" Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="Blue">
+                <TextBlock Name="txtBottom" MouseUp="txtBottom_MouseUp"></TextBlock>
+            </Border>
+        </Grid>
+
+        <Button Name="btnDisconnect" Content="切断" Click="btnDisconnect_Click" IsEnabled="false" Padding="10" Margin="30 30 30 0"/>
+    </StackPanel>
 </Window>

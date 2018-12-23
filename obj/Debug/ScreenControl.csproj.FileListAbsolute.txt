@@ -12,3 +12,20 @@ c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl
 c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.csproj.GenerateResource.Cache
 c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.exe
 c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\ScreenControl.pdb
+C:\Users\megas\Documents\GitHub\ScreenControl\bin\Debug\ScreenControl.exe.config
+C:\Users\megas\Documents\GitHub\ScreenControl\bin\Debug\ScreenControl.exe
+C:\Users\megas\Documents\GitHub\ScreenControl\bin\Debug\ScreenControl.pdb
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.csprojResolveAssemblyReference.cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\MainWindow.g.cs
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\App.g.cs
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl_MarkupCompile.cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl_MarkupCompile.lref
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\MainWindow.baml
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.g.resources
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.Properties.Resources.resources
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.csproj.GenerateResource.Cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.csproj.CoreCompileInputs.cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.exe
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.pdb
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\Screen.g.cs
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\Screen.baml

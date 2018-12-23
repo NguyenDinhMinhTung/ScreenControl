@@ -9,14 +9,13 @@ using System.Windows.Forms;
 
 namespace ScreenControl
 {
-    class MouseHook
+    public class MouseHook
     {
         /// <summary>
         /// Internal callback processing function
         /// </summary>
         private delegate IntPtr MouseHookHandler(int nCode, IntPtr wParam, IntPtr lParam);
         private MouseHookHandler hookHandler;
-
         /// <summary>
         /// Function to be called when defined even occurs
         /// </summary>
@@ -89,6 +88,7 @@ namespace ScreenControl
             // parse system messages
             if (nCode >= 0)
             {
+                MSLLHOOKSTRUCT hookstruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
                 if (MouseMessages.WM_LBUTTONDOWN == (MouseMessages)wParam)
                     if (LeftButtonDown != null)
                         LeftButtonDown((MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT)));
@@ -166,6 +166,9 @@ namespace ScreenControl
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
+
+        [DllImport("User32.dll")]
+        private static extern bool SetCursorPos(int X, int Y);
         #endregion
     }
 }

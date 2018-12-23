@@ -1,0 +1,16 @@
+C:\Users\megas\Documents\GitHub\ScreenControl\bin\Release\ScreenControl.exe.config
+C:\Users\megas\Documents\GitHub\ScreenControl\bin\Release\ScreenControl.exe
+C:\Users\megas\Documents\GitHub\ScreenControl\bin\Release\ScreenControl.pdb
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\MainWindow.g.cs
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\Screen.g.cs
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\App.g.cs
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl_MarkupCompile.cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl_MarkupCompile.lref
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\MainWindow.baml
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\Screen.baml
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.g.resources
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.Properties.Resources.resources
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.csproj.GenerateResource.Cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.csproj.CoreCompileInputs.cache
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.exe
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.pdb
