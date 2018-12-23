@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenControl"
         mc:Ignorable="d"
-        Title="Server" Height="285.355" Width="347.824" ResizeMode="NoResize" Closing="Window_Closing">
-    <StackPanel>
-        <TextBlock Name="txtStatus" Text="接続待ち" FontSize="20" Margin="20" />
+        Title="Server" Height="433.355" Width="347.824" ResizeMode="NoResize" Closing="Window_Closing" Loaded="Window_Loaded">
+    <StackPanel Margin="20">
+        <TextBlock Name="txtStatus" Text="接続待ち" FontSize="20" />
 
         <Grid Width="150" Height="100">
             <Grid.ColumnDefinitions>
@@ -35,6 +35,10 @@
             </Border>
         </Grid>
 
+        <CheckBox Name="ckbMouse" Content="マウス"/>
+        <CheckBox Name="ckbKeyboard" Content="キーボード"/>
+        <CheckBox Name="ckbClipboard" Content="クリップボード"/>
         <Button Name="btnDisconnect" Content="切断" Click="btnDisconnect_Click" IsEnabled="false" Padding="10" Margin="30 30 30 0"/>
+        <RichTextBox Name="text" Height="94"/>
     </StackPanel>
 </Window>

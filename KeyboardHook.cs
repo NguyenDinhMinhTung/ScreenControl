@@ -284,7 +284,10 @@ namespace ScreenControl
                         KeyUp((VKeys)Marshal.ReadInt32(lParam));
             }
 
-            return CallNextHookEx(hookID, nCode, wParam, lParam);
+            if (Screen.isPrimaryScreen)
+                return CallNextHookEx(hookID, nCode, wParam, lParam);
+            else
+                return (IntPtr)1;
         }
 
         /// <summary>

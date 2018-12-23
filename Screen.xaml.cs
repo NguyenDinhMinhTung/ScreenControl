@@ -32,7 +32,7 @@ namespace ScreenControl
         public Direction screenDrirection = Direction.Left;
 
         float scale;
-        public bool isPrimaryScreen = true;
+        public static bool isPrimaryScreen = true;
 
         public Screen()
         {

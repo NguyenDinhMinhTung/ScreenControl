@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -41,15 +43,25 @@ namespace ScreenControl
         DispatcherTimer waitConnectEffect;
         int waitConnectEffectCount = 0;
 
+        IntPtr _ClipboardViewerNext;
+
         [DllImport("User32.dll")]
         private static extern bool SetCursorPos(int X, int Y);
 
         [DllImport("user32.dll")]
         public static extern uint keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
 
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
+
         public MainWindow()
         {
             InitializeComponent();
+
+            //RegisterClipboardViewer();
+
+            //HwndSource src = HwndSource.FromHwnd(new WindowInteropHelper(this).Handle);
+            //src.AddHook(new HwndSourceHook(WndProc));
 
             var currentDPI = (int)Registry.GetValue("HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics", "AppliedDPI", 96);
             scale = (float)currentDPI / 96;
@@ -84,6 +96,43 @@ namespace ScreenControl
             setupHook();
 
             setupNewServer();
+        }
+
+        public void RegisterClipboardViewer()
+        {
+                _ClipboardViewerNext = new WindowInteropHelper(this).Handle;
+        }
+
+        public void UnregisterClipboardViewer()
+        {
+            using (ProcessModule module = Process.GetCurrentProcess().MainModule)
+                User32.ChangeClipboardChain(GetModuleHandle(module.ModuleName), _ClipboardViewerNext);
+        }
+
+        private void GetClipboardData()
+        {
+            System.Windows.Forms.IDataObject iData = new System.Windows.Forms.DataObject();
+
+            try
+            {
+                iData = System.Windows.Forms.Clipboard.GetDataObject();
+            }
+            catch (System.Runtime.InteropServices.ExternalException externEx)
+            {
+                // Copying a field definition in Access 2002 causes this sometimes?
+                Debug.WriteLine("InteropServices.ExternalException: {0}", externEx.Message);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+
+            if (iData.GetDataPresent(DataFormats.Text))
+            {
+                MessageBox.Show((string)iData.GetData(DataFormats.Text));
+            }
         }
 
         void setupNewServer()
@@ -126,7 +175,7 @@ namespace ScreenControl
         {
             mouseHook.MouseMove += new MouseHook.MouseHookCallback((p) =>
             {
-                if (screen.isPrimaryScreen)
+                if (Screen.isPrimaryScreen)
                 {
                     if ((p.pt.x <= 2 && screen.screenDrirection == Screen.Direction.Left) ||
                     (p.pt.x >= screenWidth - 2 && screen.screenDrirection == Screen.Direction.Right) ||
@@ -137,7 +186,7 @@ namespace ScreenControl
                     }
                 }
 
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                 {
                     server.SendData(0, (double)(p.pt.x) / screenWidth, (double)(p.pt.y) / screenHeight);
                 }
@@ -145,43 +194,43 @@ namespace ScreenControl
 
             mouseHook.LeftButtonDown += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                     server.SendData(1, 0, 0);
             });
 
             mouseHook.LeftButtonUp += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                     server.SendData(2, 0, 0);
             });
 
             mouseHook.RightButtonDown += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                     server.SendData(3, 0, 0);
             });
 
             mouseHook.RightButtonUp += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                     server.SendData(4, 0, 0);
             });
 
             mouseHook.MiddleButtonDown += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                     server.SendData(5, 0, 0);
             });
 
             mouseHook.MiddleButtonUp += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                     server.SendData(6, 0, 0);
             });
 
             mouseHook.MouseWheel += new MouseHook.MouseHookCallback((p) =>
             {
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                 {
                     if (p.mouseData == 7864320)
                     {
@@ -197,7 +246,7 @@ namespace ScreenControl
             keyboardHook.KeyDown += new KeyboardHook.KeyboardHookCallback((p) =>
             {
                 //MessageBox.Show(p.ToString());
-                if (!screen.isPrimaryScreen)
+                if (!Screen.isPrimaryScreen)
                 {
                     byte[] data = new byte[2];
                     data[0] = 10;
@@ -206,6 +255,18 @@ namespace ScreenControl
                     server.Send(data);
                 }
             });
+
+            keyboardHook.KeyUp += new KeyboardHook.KeyboardHookCallback((p) =>
+              {
+                  if (!Screen.isPrimaryScreen)
+                  {
+                      byte[] data = new byte[2];
+                      data[0] = 11;
+                      data[1] = (byte)p;
+                      //data[1] = 0x4A;
+                      server.Send(data);
+                  }
+              });
 
             mouseHook.Install();
             keyboardHook.Install();
@@ -290,6 +351,87 @@ namespace ScreenControl
             txtBottom.Background = new SolidColorBrush(Colors.BlueViolet);
 
             screen.screenDrirection = Screen.Direction.Bottom;
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg!=160&&msg!=132&&msg!=522&&msg!=512&&msg!=32)
+            text.AppendText(msg.ToString()+" ");
+            switch ((Msgs)msg)
+            {
+                //
+                // The WM_DRAWCLIPBOARD message is sent to the first window 
+                // in the clipboard viewer chain when the content of the 
+                // clipboard changes. This enables a clipboard viewer 
+                // window to display the new content of the clipboard. 
+                //
+                case Msgs.WM_DRAWCLIPBOARD:
+
+                    Debug.WriteLine("WindowProc DRAWCLIPBOARD: " + msg, "WndProc");
+
+                    GetClipboardData();
+
+                    //
+                    // Each window that receives the WM_DRAWCLIPBOARD message 
+                    // must call the SendMessage function to pass the message 
+                    // on to the next window in the clipboard viewer chain.
+                    //
+                    User32.SendMessage(_ClipboardViewerNext, msg, wParam, lParam);
+                    break;
+
+
+                //
+                // The WM_CHANGECBCHAIN message is sent to the first window 
+                // in the clipboard viewer chain when a window is being 
+                // removed from the chain. 
+                //
+                case Msgs.WM_CHANGECBCHAIN:
+                    Debug.WriteLine("WM_CHANGECBCHAIN: lParam: " + lParam, "WndProc");
+
+                    // When a clipboard viewer window receives the WM_CHANGECBCHAIN message, 
+                    // it should call the SendMessage function to pass the message to the 
+                    // next window in the chain, unless the next window is the window 
+                    // being removed. In this case, the clipboard viewer should save 
+                    // the handle specified by the lParam parameter as the next window in the chain. 
+
+                    //
+                    // wParam is the Handle to the window being removed from 
+                    // the clipboard viewer chain 
+                    // lParam is the Handle to the next window in the chain 
+                    // following the window being removed. 
+                    if (wParam == _ClipboardViewerNext)
+                    {
+                        //
+                        // If wParam is the next clipboard viewer then it
+                        // is being removed so update pointer to the next
+                        // window in the clipboard chain
+                        //
+                        _ClipboardViewerNext = lParam;
+                    }
+                    else
+                    {
+                        User32.SendMessage(_ClipboardViewerNext, msg, wParam, lParam);
+                    }
+                    break;
+
+                default:
+                    //
+                    // Let the form process the messages that we are
+                    // not interested in
+                    //
+                    break;
+
+            }
+
+            return IntPtr.Zero;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            HwndSource source = HwndSource.FromHwnd(new WindowInteropHelper(this).Handle);
+            source.AddHook(new HwndSourceHook(WndProc));
+
+            RegisterClipboardViewer();
         }
     }
 }

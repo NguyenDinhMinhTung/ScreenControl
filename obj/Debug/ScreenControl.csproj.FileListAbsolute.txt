@@ -29,3 +29,5 @@ C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.exe
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.pdb
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\Screen.g.cs
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\Screen.baml
+C:\Users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\Screen.g.cs
+C:\Users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\Screen.baml

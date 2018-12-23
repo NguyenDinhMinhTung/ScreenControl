@@ -55,12 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clipboard.cs" />
+    <Compile Include="ClipboardMonitor.cs" />
     <Compile Include="Convert.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="Screen.xaml.cs">
       <DependentUpon>Screen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Server.cs" />
+    <Compile Include="Shell32.cs" />
+    <Compile Include="User32.cs" />
     <Compile Include="WinCursor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
