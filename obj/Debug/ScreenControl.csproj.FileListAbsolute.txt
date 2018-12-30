@@ -15,7 +15,6 @@ c:\users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl
 C:\Users\megas\Documents\GitHub\ScreenControl\bin\Debug\ScreenControl.exe.config
 C:\Users\megas\Documents\GitHub\ScreenControl\bin\Debug\ScreenControl.exe
 C:\Users\megas\Documents\GitHub\ScreenControl\bin\Debug\ScreenControl.pdb
-C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.csprojResolveAssemblyReference.cache
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\MainWindow.g.cs
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\App.g.cs
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl_MarkupCompile.cache
@@ -31,3 +30,4 @@ C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\Screen.g.cs
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\Screen.baml
 C:\Users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\Screen.g.cs
 C:\Users\megas\documents\visual studio 2017\Projects\ScreenControl\ScreenControl\obj\Debug\Screen.baml
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Debug\ScreenControl.csprojAssemblyReference.cache

@@ -22,7 +22,7 @@ namespace ScreenControl
         EndPoint Remote;
 
         Thread thReceiveMess;
-        
+
         public bool isConnected = false;
 
         ActionAcceptConnect AcceptConnect;
@@ -47,9 +47,9 @@ namespace ScreenControl
             isConnected = true;
             AcceptConnect("", null);
 
-            thReceiveMess = new Thread(thReceiveMessage);
-            thReceiveMess.IsBackground = true;
-            thReceiveMess.Start();
+            //thReceiveMess = new Thread(thReceiveMessage);
+            //thReceiveMess.IsBackground = true;
+            //thReceiveMess.Start();
 
             SendData(0, 0, 0);
             //data = new byte[1024];
