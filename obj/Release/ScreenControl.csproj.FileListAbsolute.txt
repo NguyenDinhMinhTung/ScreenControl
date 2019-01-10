@@ -14,3 +14,4 @@ C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.csproj.G
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.csproj.CoreCompileInputs.cache
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.exe
 C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.pdb
+C:\Users\megas\Documents\GitHub\ScreenControl\obj\Release\ScreenControl.csprojAssemblyReference.cache
